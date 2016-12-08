@@ -56,6 +56,14 @@ function process_form() {
   } else {
     $fundraising = "";
   }
+   //the youth databse code to add
+    if(isset($POST_['youth'])) {
+        $youth=$_POST['youth'];
+    } else {
+        $youth= "";
+    }
+    
+    
   $semester = $_POST['semester'];
   $description = htmlspecialchars($description, ENT_QUOTES);
   if ($month == NULL || $day == NULL || $event == NULL || $hours == NULL || $servicetype == NULL) {
@@ -76,7 +84,9 @@ function process_form() {
   }
   else {
     $insert = "INSERT INTO apo.recorded_hours (user_id, event, month, day, year, date, description, hours, servicetype, fundraising, semester) values('$id', '$event', '$month','$day', '$year', '$date', '$description', '$hours', '$servicetype', '$fundraising', '$semester') ON DUPLICATE KEY UPDATE description='NEEDS NEW DESCRIPTION';";
-    $query2 = $db->query($insert) or die($db->error);
+    //insert statement for youth
+      $insert="INSERT INTO apo.recorded_hours(youth) values('$youth')ON DUPLICATE KEY UPDATE description='NEEDS NEW DESCRIPTION';";
+      $query2 = $db->query($insert) or die($db->error);
     $result = '1';
       /*if($fundraising == 1){//also ads fundraising hours to another DB so we can see who the first 30 were. --030915 code appears old, table no longer used
         $sql5 = "SELECT * FROM `first_30`";
