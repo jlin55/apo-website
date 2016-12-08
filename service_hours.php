@@ -358,6 +358,10 @@ END; ?>
           <label for="fundraising">Fundraising</label>
             <input name="fundraising" type="checkbox" value="1" />
         </p>
+          <!--check box for "youth that we are adding"-->
+          <p>
+              <label for="youth">Youth</label>
+              <input name="youth" type="checkbox" value="1" />
         <p>
           <label for="description">Description</label>
               <input name="description" size="30" type="text" />
